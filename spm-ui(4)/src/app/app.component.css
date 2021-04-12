@@ -1,0 +1,20 @@
+.card {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+  left: 35%;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+
+}
+
+.card h5 {
+  display: flex;
+  justify-content: center;
+}
+.card .card-link {
+  display: flex;
+  justify-content: flex-end;
+}
+body {
+  background-color: #ebebebe6 !important;
+}

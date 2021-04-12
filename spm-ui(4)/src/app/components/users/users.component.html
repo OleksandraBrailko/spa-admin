@@ -1,0 +1,177 @@
+<!-- Users table -->
+
+<div class="navigation-card-table">
+  <div class="card" style="width: 80%; ">
+    <div class="card-body">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+              name="usersFilter" [(ngModel)]="usersFilter">
+          </form>
+        </div>
+      </nav>
+      <br>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewUser" style="margin: 6px;" (click)="clearGroupModel()">
+        Add user
+      </button>
+      <div class="groups-users-list">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">User name</th>
+              <th scope="col">Email address</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of filteredUsers">
+              <td>
+                <button type="button" class="btn" data-toggle="modal" data-target="#myModal" (click)="selectUser(user)">
+                  {{user.userName}}
+                </button>
+              </td>
+              <td> {{user.email}}</td>
+              <td>
+                <button class="btn" (click)="deleteUser(user.id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                  </svg>
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create new user modal -->
+
+<div class="modal fade" id="addNewUser" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="padding:5%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addUserModalLabel">Add a user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <br>
+        <h5>Set the basics</h5>
+        <form>
+          <div class="form-user">
+            <label for="userName">User name</label>
+            <input type="text" class="form-control" id="userName"  name="userName" placeholder="User name" [(ngModel)]="currentUser.userName">
+          </div>
+          <div class="form-group">
+            <br>
+            <label for="userEmail">User email address</label>
+            <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="example@gmail.com" [(ngModel)]="currentUser.email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createUser()">Send notification</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal user information -->
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">User name
+          <br>
+          <small>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot"
+              viewBox="0 0 16 16">
+              <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+            </svg>
+            <i class="bi bi-dot"></i>{{currentUser?.groups?.length}} groups</small>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="generalUserInfomation">
+          <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2"
+            style="padding: 0px; margin-left:80%">
+            Modify
+          </button>
+          <table class="table table-borderless table-sm" id="general-info">
+            <tbody>
+              <tr>
+                <td>
+                  <h6>User name<br><small>{{currentUser.userName}}</small></h6>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <h6>User email<br><small>{{currentUser.email}}</small></h6>
+                </td>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h5>Groups</h5>
+          <table class="table table-borderless table-sm" id="users-list">
+            <tbody>
+              <tr *ngFor="let group of currentUser.groups">
+                <td>{{group.groupName}}</td>
+                <td><small>{{group.enabledEmail ? group.email: ''}}</small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal update user -->
+
+<div class="modal fade" id="myModal2" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeUserDescriptionModalLabel">General information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="userNameFormControlInput1">Modify user's name</label>
+          <input type="text" class="form-control" id="userNameFormControlInput1" name="userNameFormControlInput1" placeholder="User_1" [(ngModel)]="currentUser.userName">
+        </div>
+        <div class="form-group">
+          <label for="userEmailFormControlInput1">Modify group's email address</label>
+          <input type="email" class="form-control" id="userEmailFormControlInput1" name="userEmailFormControlInput1" placeholder="user_1@gmail.com" [(ngModel)]="currentUser.email">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateGroup()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

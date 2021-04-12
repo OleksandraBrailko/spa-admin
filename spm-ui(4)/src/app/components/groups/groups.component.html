@@ -1,0 +1,372 @@
+<div class="navigation-card-table">
+
+  <!-- Groups -->
+
+  <div class="card" style="width: 80%; ">
+    <div class="card-body">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="groupsFilter" aria-label="Search" [(ngModel)]="groupsFilter">
+          </form>
+        </div>
+      </nav>
+      <br>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewGroup" style="margin: 6px;"
+        (click)="clearGroupModel()">
+        Add group
+      </button>
+      <div class="groups-users-list">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Group name</th>
+              <th scope="col">Email address</th>
+              <th scope="col">Type</th>
+              <th scope="col">Creation date</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let group of filteredGroups">
+              <td>
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter"
+                  (click)="selectGroup(group)">
+                  {{group.groupName}}
+                </button>
+              </td>
+              <td>{{group.enabledEmail ? group.email: ""}}</td>
+              <td>{{group.enabledEmail ? "Mail enabled secure": "Secure"}}</td>
+              <td>{{group.createdDate | date}}</td>
+              <td>Active</td>
+              <td>
+                <button class="btn" (click)="deleteGroup(group.id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                  </svg>
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create new group modal -->
+
+<div class="modal fade" id="addNewGroup" tabindex="-1" aria-labelledby="addGroupModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="padding:5%">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addGroupModalLabel">Add a group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Choose a group type</h5>
+        <p>Choose a groupe type that meets your team's needs.
+          <a href="https://www.security-type.com/" target="_blank">More information about group types</a>
+        </p>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked
+            [(ngModel)]="currentGroup.enabledEmail">
+          <label class="form-check-label" for="exampleRadios1">
+            Mail enabled security
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false"
+            [(ngModel)]="currentGroup.enabledEmail">
+          <label class="form-check-label" for="exampleRadios2">
+            Security
+          </label>
+        </div>
+        <br>
+        <h5>Set the basics</h5>
+        <form>
+          <div class="form-group">
+            <label for="groupName">Group name</label>
+            <input type="email" class="form-control" id="groupName" name="groupName" aria-describedby="emailHelp"
+              [(ngModel)]="currentGroup.groupName">
+          </div>
+          <div class="form-group">
+            <label for="groupEmail">Group Email</label>
+            <input type="email" class="form-control" id="groupEmail" name="groupEmail" [(ngModel)]="currentGroup.email">
+          </div>
+          <div class="form-group">
+            <label for="GroupDescriptionTextarea1">Group description</label>
+            <textarea class="form-control" id="GroupDescriptionTextarea1" name="GroupDescriptionTextarea1" rows="3"
+              [(ngModel)]="currentGroup.description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createGroup()">Create group</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Group Information Modal -->
+
+<div class="detailed-inforamation">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">{{currentGroup.groupName}}
+            <small>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot"
+                viewBox="0 0 16 16">
+                <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+              </svg>
+              <i class="bi bi-dot"></i>1 owner</small>
+            <small>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot"
+                viewBox="0 0 16 16">
+                <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+              </svg>
+              <i class="bi bi-dot"></i>{{currentGroup?.users?.length + currentGroup?.childGroups?.length}} members</small>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-3">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-general-tab" data-toggle="pill" href="#v-pills-general"
+                  role="tab" aria-controls="v-pills-general" aria-selected="true">General</a>
+                <a class="nav-link" id="v-pills-members-tab" data-toggle="pill" href="#v-pills-members" role="tab"
+                  aria-controls="v-pills-members" aria-selected="false">Members</a>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="tab-content " id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel"
+                  aria-labelledby="v-pills-general-tab">
+                  <table class="table table-borderless table-sm" id="general-info">
+                    <tbody>
+                      <tr>
+                        <td><br><br>
+                          <h6>Group name<br><small>{{currentGroup.groupName}}</small></h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br>
+                          <h6>Group description<br><small>{{currentGroup.description}}</small></h6>
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br>
+                          <h6>Group email<br><small>{{currentGroup.email}}</small></h6>
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br>
+                          <h6>Creation date<br><small>{{currentGroup.createdDate | date}}</small></h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><br><button type="button" class="btn btn-link" data-toggle="modal"
+                            data-target="#ChangeGroupDescription" style="padding: 0px;">
+                            Modify
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="v-pills-members" role="tabpanel" aria-labelledby="v-pills-members-tab">
+                  <table class="table table-borderless" id="membersTable">
+                    <tbody style="margin:0%">
+                      <tr colspan="3">
+                        <button type="button" type="button" class="btn btn-outline-primary" data-toggle="modal"
+                          data-target="#addMemberModal" style="margin-left:75%;" (click)="resetAllCheckboxes()" >Add members</button>
+                      </tr>
+                      <tr colspan="3" id="ownerName">
+                        <h5><br>Owner</h5>
+                        <p>{{authenticatedUser?.userName}}<br><small>{{authenticatedUser.email}}</small></p>
+                      </tr>
+                      <tr id="addMembers-here">
+                        <h5><br>Members</h5>
+                        <table class="table table-borderless table-sm" id="users-list">
+                          <tbody>
+                            <tr *ngFor="let user of currentGroup.users">
+                              <td>{{user.userName}}</td>
+                              <td><small>{{user.email}}</small></td>
+                              <td>
+                                <button class="btn" *ngIf="user.id != authenticatedUser.id" (click)="deleteUserGroupMember(user.id)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                  </svg>
+                                  <i class="bi bi-trash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr *ngFor="let childGroup of currentGroup.childGroups">
+                              <td>{{childGroup.groupName}}</td>
+                              <td><small>{{childGroup.enabledEmail ? childGroup.email : ''}}</small></td>
+                              <td>
+                                <button class="btn" (click)="deleteChildGroupMember(childGroup.id)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                  </svg>
+                                  <i class="bi bi-trash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal modify group -->
+
+<div class="modal fade" id="ChangeGroupDescription" tabindex="-1" aria-labelledby="changeGroupDescriptionModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeGroupDescriptionModalLabel">General information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Group name<br><small>{{currentGroup.groupName}}</small></h6>
+        <div class="form-group">
+          <label for="NewGroupDescroptionTextArea">Modify group's description</label>
+          <textarea class="form-control" id="NewGroupDescroptionTextArea" rows="3" placeholder="group_1 description"
+            [(ngModel)]="currentGroup.description"></textarea>
+        </div>
+        <div class="form-group" *ngIf="currentGroup.enabledEmail"> 
+          <label for="groupEmailFormControlInput1">Modify group's email address</label>
+          <input type="email" class="form-control" id="groupEmailFormControlInput1" placeholder="group_1@gmail.com"
+            [(ngModel)]="currentGroup.email">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateGroup()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal add members -->
+
+<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMemberModalLabel">Add members</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="groups-tab" data-toggle="tab" href="#groups" role="tab"
+              aria-controls="groups" aria-selected="true">Groups</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users"
+              aria-selected="false">Users</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="groups" role="tabpanel" aria-labelledby="groups-tab">
+            <br>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                style="width: 40%;">
+            </form>
+            <br>
+            <p>All ({{groupsForCheckboxes?.length}})</p>
+            <table class="table table-borderless table-sm" id="users-list">
+              <tbody>
+                <tr *ngFor="let group of groupsForCheckboxes">
+                  <td>
+                    <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="group.checked">
+                      <label class="form-check-label" for="exampleCheck1">{{group.groupName}}</label>
+                    </div>
+                  </td>
+                  <td>{{group.enabledEmail ? group.email : ''}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+            <br>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                style="width: 40%;">
+            </form>
+            <br>
+            <p>All ({{usersForCheckboxes?.length}})</p>
+            <table class="table table-borderless table-sm" id="users-list">
+              <tbody>
+                <tr *ngFor="let user of usersForCheckboxes">
+                  <td>
+                    <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="userCheck{{user.id}}" [(ngModel)]="user.checked">
+                      <label class="form-check-label" for="userCheck{{user.id}}">{{user.userName}}</label>
+                    </div>
+                  </td>
+                  <td>{{user.email}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateGroupMembers()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

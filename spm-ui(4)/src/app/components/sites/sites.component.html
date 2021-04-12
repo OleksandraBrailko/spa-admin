@@ -1,0 +1,320 @@
+<div class="navigation-card-table">
+  <!-- Navigation between list of groups/users -->
+  <div class="card" style="width: 80%; ">
+      <div class="card-body">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-primary" type="submit">Search</button>
+                  </form>
+              </div>
+              </nav>
+              <!-- Button add group -->
+              <br>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewUser" style="margin: 6px;">
+                  Create site
+              </button>
+              <!-- Table -->
+              <div class="groups-users-list">
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Site name</th>
+                          <th scope="col">Creation date</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                              <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                School spring events
+                              </button>
+                          </td>
+                          <td>4/10/2021</td>
+                          <td>
+                            <button class="btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                              <i class="bi bi-trash"></i>
+                          </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="detailed-inforamation">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg " role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">School spring events
+              <br>
+              <small>Managment of engineering school spring students' scheluded events</small>
+              <br>
+              <small>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+                      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    </svg>
+                  <i class="bi bi-dot"></i>2 owner</small>
+              <small>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+                      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    </svg>
+                  <i class="bi bi-dot"></i>3 members</small>
+          </h5>
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+              <!-- Navigation through information -->
+              <div class="row">
+                  <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-general-tab" data-toggle="pill" href="#v-pills-general" role="tab" aria-controls="v-pills-general" aria-selected="true">General</a>
+                      <a class="nav-link" id="v-pills-members-tab" data-toggle="pill" href="#v-pills-members" role="tab" aria-controls="v-pills-members" aria-selected="false">Members</a>
+                    </div>
+                  </div>
+                  <div class="col-9">
+                    <div class="tab-content " id="v-pills-tabContent">
+                      <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab">
+                          <table class="table table-borderless table-sm" id="general-info">
+                              <tbody>
+                                <tr>
+                                  <td ><br><br><h6>Site name<br><small>School spring events</small></h6></td>
+                                </tr>
+                                <tr>
+                                  <td><br><h6>Group description<br><small>Managment of engineering school spring students' scheluded events</small></h6></td>
+                                  <td>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td ><br><h6>Creation date<br><small>4/10/2021</small></h6></td>
+                                </tr>
+                                <tr>
+                                  <td></td>
+                                  <td><br><button type="button" class="btn btn-link" data-toggle="modal" data-target="#ChangeGroupDescription" style="padding: 0px;">
+                                    Modify
+                                  </button></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-members" role="tabpanel" aria-labelledby="v-pills-members-tab">
+                          <table class="table table-borderless" id="membersTable">
+                              <tbody style="margin:0%">
+                                <tr colspan="3">
+                                      <button type="button" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addMemberModal" style="margin-left:75%;">Add members</button>
+                                </tr>
+                                <tr colspan="3" id="ownerName">
+                                  <h5><br>Owner</h5>
+                                  <p>CA-21<br><small>sys-a21-lp@gmail.com</small></p>
+                                  <p>CA-22<br><small>sys-a22-lp@gmail.com</small></p>
+                                  
+                                </tr>
+                                <tr id="addMembers-here">
+                                  <h5><br>Members</h5>
+                                  <table class="table table-borderless table-sm" id="users-list">
+                                      <tbody>
+                                      <tr>
+                                          <td>CA-21</td>
+                                          <td><small>sys-a21-lp@gmail.com</small></td>
+                                          <td>
+                                              <button class="btn">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                    </svg>
+                                                  <i class="bi bi-trash"></i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>CA-22</td>
+                                          <td><small>sys-a22-lp@gmail.com</small></td>
+                                          <td>
+                                              <button class="btn">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                    </svg>
+                                                  <i class="bi bi-trash"></i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                        <td>INTEL-20</td>
+                                        <td><small>intel-b20-lp@gmail.com</small></td>
+                                        <td>
+                                            <button class="btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg>
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                      </tbody>
+                                  </table>
+                                </tr>
+                              </tbody>
+                            </table>
+                      </div>
+
+                     </div>
+                  </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+          
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal add members -->
+<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+            
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+  <div class="modal-content">
+
+     
+
+      <div class="modal-header">
+      <h5 class="modal-title" id="addMemberModalLabel">Add members</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="groups-tab" data-toggle="tab" href="#groups" role="tab" aria-controls="groups" aria-selected="true">Owners</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Members</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="visitors-tab" data-toggle="tab" href="#visitors" role="tab" aria-controls="visitors" aria-selected="false">Visitors</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="groups" role="tabpanel" aria-labelledby="groups-tab">                            
+                  <br>
+                  <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  style="width: 40%;">
+                      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                  <br>
+                  <p>All (2)</p>
+                  <table class="table table-borderless table-sm" id="users-list">
+                      <tbody>
+                      <tr>
+                          <td>
+                              <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">group_1</label>
+                          </div>
+                          </td>
+                          <td>group_1@gmail.com</td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">group_2</label>
+                          </div>
+                          </td>
+                          <td>group_2@gmail.com</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">                        
+                  <br>
+                  <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  style="width: 40%;">
+                      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                  </form>                           
+                  <br>
+                  <p>All (2)</p>
+                  <table class="table table-borderless table-sm" id="users-list">
+                      <tbody>
+                      <tr>
+                          <td>
+                              <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">user_1</label>
+                          </div>
+                          </td>
+                          <td>user_1@gmail.com</td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">user_2</label>
+                          </div>
+                          </td>
+                          <td>user_2@gmail.com</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="tab-pane fade" id="visitors" role="tabpanel" aria-labelledby="visitorstab">                        
+                <br>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  style="width: 40%;">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>                           
+                <br>
+                <p>All (2)</p>
+                <table class="table table-borderless table-sm" id="users-list">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">user_1</label>
+                        </div>
+                        </td>
+                        <td>user_1@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">user_2</label>
+                        </div>
+                        </td>
+                        <td>user_2@gmail.com</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+          
+          
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+  </div>
+  </div>
+</div>

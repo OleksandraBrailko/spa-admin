@@ -1,0 +1,83 @@
+.navigation-card-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+.navigation-card-table .card  {
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+  background-color: #f8f9fa!important;
+}
+
+.groups-users-list .btn {
+  outline: none;
+  padding: 5px;
+  border: 0px;
+  box-sizing: none;
+  background-color: transparent;
+}
+
+.modal#addNewUser .modal-dialog {
+  height: auto;
+  align-items: center;
+}
+.modal#addNewUser .modal-content {
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.modal#exampleModalCenter .modal-dialog {
+  height: auto;
+  align-items: center;
+
+}
+.modal#exampleModalCenter .modal-content {
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  overflow-y: auto
+}
+#membersTable li {
+    padding:2px;
+}
+#addMembers-here p {
+  margin:0%;
+}
+#addMembers-here small{
+  margin-right:0%;
+  font-size: 0.35cm;
+}
+#general-info small{
+  font-size: 0.35cm;
+}
+
+
+
+.modal#addMemberModal .modal-content {
+    margin-right: auto;
+}
+
+#users-list tr td * {
+    margin-bottom:0%;
+}
+#generalUserInfomation {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.modal#exampleModalCenter {
+  overflow: auto;
+}
+
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+
+.modal:nth-of-type(even) {
+z-index: 1052 !important;
+}
+.modal-backdrop.show:nth-of-type(even) {
+z-index: 1051 !important;
+}
+

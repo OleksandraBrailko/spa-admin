@@ -1,0 +1,79 @@
+.navigation-card-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+.navigation-card-table .card  {
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+  background-color: #f8f9fa!important;
+}
+
+.groups-users-list .btn {
+  outline: none;
+  padding: 5px;
+  border: 0px;
+  box-sizing: none;
+  background-color: transparent;
+}
+
+.modal#addNewGroup .modal-dialog {
+  height: 100%;
+  margin: 0;
+  align-items: center;
+  left: 25%;
+
+}
+.modal#addNewGroup .modal-content {
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.modal#exampleModalCenter .modal-dialog, .modal#addMemberModal .modal-dialog{
+  height: 100%;
+  margin: 0;
+  align-items: center;
+  left: 40%;
+
+}
+.modal#exampleModalCenter .modal-content, .modal#addMemberModal .modal-content{
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  overflow-y: auto
+}
+#membersTable li {
+    padding:2px;
+}
+#addMembers-here p {
+  margin:0%;
+}
+#addMembers-here small{
+  margin-right:0%;
+  font-size: 0.35cm;
+}
+#general-info small{
+  font-size: 0.35cm;
+}
+
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+}
+
+.modal#addMemberModal .modal-content {
+    margin-right: auto;
+}
+
+#users-list tr td * {
+    margin-bottom:0%;
+}
